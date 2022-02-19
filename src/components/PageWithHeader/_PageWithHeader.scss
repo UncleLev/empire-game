@@ -1,0 +1,10 @@
+@import '../../styles/variables';
+
+.page-with-header {
+    &__container {
+        height: calc(100vh - #{$globalHeaderSize} - 40px);
+        padding: 15px 10px;
+        display: flex;
+        flex-direction: column;
+    }
+}

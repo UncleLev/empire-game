@@ -2,6 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 import GlobalHeader from '../GlobalHeader';
 import { GlobalHeaderInterface } from '../GlobalHeader/GlobalHeader';
+import './_PageWithHeader.scss';
 
 interface PageWithHeaderInterface extends GlobalHeaderInterface {
     children: React.ReactNode;
