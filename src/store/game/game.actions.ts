@@ -1,3 +1,5 @@
 import * as actionTypes from './game.types';
 
-export const changeGameCategory = (payload: any) => ({ action: actionTypes.CHANGE_GAME_CATEGORY, payload });
+export const changeGameCategory = (value: string) => ({ type: actionTypes.CHANGE_GAME_CATEGORY, payload: value });
+
+export const addWord = (payload: { word: string; fake: boolean }) => ({ type: actionTypes.ADD_WORLD, payload });

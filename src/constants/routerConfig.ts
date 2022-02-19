@@ -1,6 +1,7 @@
 const routerConfig = {
     root: '*',
     startPage: '/',
-    addWords: '/addWords',
+    addWords: '/add-words',
+    menu: '/menu',
 };
 export default routerConfig;

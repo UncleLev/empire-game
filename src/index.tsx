@@ -9,6 +9,7 @@ import routerConfig from './constants/routerConfig';
 import StartPage from './components/StartPage';
 import theme from './styles/theme';
 import store from './store/store';
+import AddWordsPage from './components/AddWordsPage';
 
 ReactDOM.render(
     <React.StrictMode>
@@ -17,6 +18,7 @@ ReactDOM.render(
                 <BrowserRouter>
                     <Routes>
                         <Route path={routerConfig.startPage} element={<StartPage />} />
+                        <Route path={routerConfig.addWords} element={<AddWordsPage />} />
                     </Routes>
                 </BrowserRouter>
             </ThemeProvider>
