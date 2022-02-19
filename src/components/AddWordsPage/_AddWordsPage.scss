@@ -1,0 +1,33 @@
+.add-words-page {
+    height: 100%;
+    &__container {
+        height: 100%;
+        padding-top: 100px;
+    }
+
+    &__word-added-container {
+        height: 160px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+}
+
+.add-words-page-form {
+
+    &__category {
+        margin-bottom: 20px;
+    }
+}
+
+.add-words-page-word-added-container {
+    &__title {
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    &__link {
+        width: 100%;
+    }
+}

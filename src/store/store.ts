@@ -5,4 +5,6 @@ const reducer = combineReducers({ game: gameReducer });
 
 const store = createStore(reducer);
 
+export type RootState = ReturnType<typeof store.getState>;
+
 export default store;

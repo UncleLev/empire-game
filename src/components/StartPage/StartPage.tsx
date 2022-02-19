@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextField } from '@mui/material';
+import { Button, TextField } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -19,9 +19,10 @@ const validationSchema = yup.object().shape({
 
 interface StartPageInterface {
     category: string;
+    changeGameCategory: (value: string) => void;
 }
 
-function StartPage({ category }: StartPageInterface) {
+function StartPage({ category, changeGameCategory }: StartPageInterface) {
     const navigate = useNavigate();
     const {
         formState: { errors, isDirty, isValid },
@@ -36,6 +37,7 @@ function StartPage({ category }: StartPageInterface) {
     });
 
     const onSubmit = (data: any) => {
+        changeGameCategory(data.category);
         navigate(routerConfig.addWords);
     };
 
@@ -51,12 +53,20 @@ function StartPage({ category }: StartPageInterface) {
                             render={({ field }) => (
                                 <TextField
                                     fullWidth
+                                    onChange={field.onChange}
                                     name={field.name}
+                                    value={field.value}
                                     className="start-page-input-container__input"
                                     label="Category"
+                                    margin="normal"
+                                    error={!!errors?.category}
+                                    helperText={errors?.category?.message || ' '}
                                 />
                             )}
                         />
+                        <Button type="submit" disabled={!isDirty || !isValid} variant="contained" color="success">
+                            Start
+                        </Button>
                     </div>
                 </form>
             </div>
