@@ -1,8 +1,15 @@
-@import "src/colors";
+@import '../../styles/colors';
+@import '../../styles/variables';
 
 .global-header {
-  &__background {
-    height: 75px;
-    width: 100%;
-  }
+    &__background {
+        height: $globalHeaderSize;
+        width: 100%;
+        background-color: $mainColor;
+        padding: 5px;
+        text-align: center;
+        font-size: 3rem;
+        color: $whiteText;
+        font-weight: 600;
+    }
 }
