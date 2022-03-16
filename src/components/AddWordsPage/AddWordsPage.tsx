@@ -3,7 +3,7 @@ import { Button, Checkbox, FormControlLabel, TextField } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import PageWithHeader from '../PageWithHeader';
 import routerConfig from '../../constants/routerConfig';
 import { wordListItemType } from '../../store/game/game.reducer';
@@ -22,11 +22,13 @@ const validationSchema = yup.object().shape({
 
 interface AddWordsPageInterface {
     wordsList: wordListItemType[];
+    // eslint-disable-next-line no-unused-vars
     addWord: (value: any) => void;
     category: string;
 }
 
 function AddWordsPage({ wordsList, category, addWord }: AddWordsPageInterface) {
+    const location = useLocation();
     const {
         formState: { isValid, isDirty, errors },
         reset,
@@ -52,6 +54,8 @@ function AddWordsPage({ wordsList, category, addWord }: AddWordsPageInterface) {
     const handleAddMore = () => {
         setIsWordAdded(false);
     };
+
+    const backLink = location?.state?.form;
 
     return (
         <PageWithHeader pageTitle="Add words" className="add-words-page" goBackLink={routerConfig.startPage}>

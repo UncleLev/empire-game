@@ -1,0 +1,11 @@
+.go-back-header-button {
+    height: 40px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    padding: 5px 15px;
+
+    &__text {
+        margin-left: 10px;
+    }
+}

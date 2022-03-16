@@ -2,9 +2,10 @@
 @import '../../styles/variables';
 
 .global-header {
+    width: 100%;
+
     &__background {
         height: $globalHeaderSize;
-        width: 100%;
         background-color: $mainColor;
         padding: 5px;
         text-align: center;
