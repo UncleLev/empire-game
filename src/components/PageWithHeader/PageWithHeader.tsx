@@ -10,11 +10,18 @@ interface PageWithHeaderInterface extends GlobalHeaderInterface {
     className?: string;
 }
 
-function PageWithHeader({ pageTitle, className, goBackLink, children }: PageWithHeaderInterface) {
+function PageWithHeader({ pageTitle, className, goBackLink, goBackTitle, children }: PageWithHeaderInterface) {
     return (
         <div className={clsx('page-with-header', className)}>
-            <GlobalHeader title={pageTitle} goBackLink={goBackLink} />
-            <div className="page-with-header__container">{children}</div>
+            <GlobalHeader goBackTitle={goBackTitle} title={pageTitle} goBackLink={goBackLink} />
+            <div
+                className={clsx(
+                    'page-with-header__container',
+                    goBackLink && 'page-with-header__container--with-back-link',
+                )}
+            >
+                {children}
+            </div>
         </div>
     );
 }

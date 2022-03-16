@@ -2,9 +2,14 @@
 
 .page-with-header {
     &__container {
-        height: calc(100vh - #{$globalHeaderSize} - 40px);
+        height: calc(100vh - 115px);
         padding: 15px 10px;
         display: flex;
         flex-direction: column;
+        &--with-back-link {
+            height: calc(100vh - 165px);
+
+        }
     }
 }
+

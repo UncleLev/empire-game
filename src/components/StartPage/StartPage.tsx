@@ -19,6 +19,7 @@ const validationSchema = yup.object().shape({
 
 interface StartPageInterface {
     category: string;
+    // eslint-disable-next-line no-unused-vars
     changeGameCategory: (value: string) => void;
 }
 
@@ -44,8 +45,8 @@ function StartPage({ category, changeGameCategory }: StartPageInterface) {
     return (
         <PageWithHeader pageTitle="Empire Game" className="start-page">
             <div className="start-page__container">
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="start-page__input-container start-page-input-container">
+                <div className="start-page__input-container start-page-input-container">
+                    <form className="start-page-input-container__form" onSubmit={handleSubmit(onSubmit)}>
                         <h3 className="start-page-input-container__title">Type category</h3>
                         <Controller
                             control={control}
@@ -64,11 +65,18 @@ function StartPage({ category, changeGameCategory }: StartPageInterface) {
                                 />
                             )}
                         />
-                        <Button type="submit" disabled={!isDirty || !isValid} variant="contained" color="success">
+                        <Button
+                            size="large"
+                            fullWidth
+                            type="submit"
+                            disabled={!isDirty || !isValid}
+                            variant="contained"
+                            color="success"
+                        >
                             Start
                         </Button>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </PageWithHeader>
     );
