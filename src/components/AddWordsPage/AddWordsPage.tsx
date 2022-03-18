@@ -55,7 +55,7 @@ function AddWordsPage({ wordsList, category, addWord }: AddWordsPageInterface) {
         setIsWordAdded(false);
     };
 
-    const backLink = location?.state?.form;
+    // const backLink = location?.state?.form;
 
     return (
         <PageWithHeader pageTitle="Add words" className="add-words-page" goBackLink={routerConfig.startPage}>
