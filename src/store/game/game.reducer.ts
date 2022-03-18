@@ -1,11 +1,17 @@
 import { nanoid } from 'nanoid';
 import * as actionTypes from './game.types';
 
+export type subjectType = {
+    id: string;
+    value: string;
+};
+
 export type wordListItemType = {
     id: string;
     value: string;
     fake: boolean;
     empireId: string;
+    subjects: subjectType[];
 };
 
 interface stateInterface {
@@ -25,7 +31,7 @@ type actionCustomType = {
 const gameReducer = (state = initialState, { type, payload }: actionCustomType) => {
     switch (type) {
         case actionTypes.CHANGE_GAME_CATEGORY:
-            return { ...state, category: payload };
+            return { ...initialState, category: payload };
 
         case actionTypes.ADD_WORLD:
             return {
@@ -34,12 +40,34 @@ const gameReducer = (state = initialState, { type, payload }: actionCustomType) 
                     ...state.wordsList,
                     {
                         id: nanoid(),
-                        value: payload.word,
+                        value: payload.value,
                         fake: payload.fake,
                         empireId: '',
+                        subjects: [],
                     },
                 ],
             };
+        case actionTypes.DEFEAT_EMPIRE: {
+            const empire = state.wordsList.find(({ id }) => payload.empire.id === id);
+            const defeat = state.wordsList.find(({ id }) => payload.defeat.id === id);
+
+            if (!empire || !defeat) {
+                console.error('Can`t find empire or defeat');
+                return state;
+            }
+            empire.subjects = [...defeat.subjects, ...empire.subjects, { id: defeat.id, value: defeat.value }];
+
+            defeat.subjects = [];
+            defeat.empireId = empire.id;
+
+            const newWordList = state.wordsList.map((word) => {
+                if (word.id === empire!.id) return empire;
+                if (word.id === defeat!.id) return defeat;
+                return word;
+            });
+
+            return { ...state, wordsList: newWordList };
+        }
 
         default:
             return state;

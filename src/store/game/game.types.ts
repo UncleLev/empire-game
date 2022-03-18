@@ -1,3 +1,5 @@
 export const CHANGE_GAME_CATEGORY = 'CHANGE_GAME_CATEGORY';
 
 export const ADD_WORLD = 'ADD_WORLD';
+
+export const DEFEAT_EMPIRE = 'DEFEAT_EMPIRE';

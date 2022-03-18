@@ -26,9 +26,10 @@
         "@typescript-eslint"
     ],
     "rules": {
-        "no-unused-vars": "warn",
         "default-param-last": "off",
         "import/prefer-default-export": "off",
+        "no-console": ["warn", { "allow": ["warn", "error"] }] ,
+        "no-unused-vars": ["warn", { "vars": "all", "args": "none", "ignoreRestSiblings": false }],
         "react/jsx-filename-extension": [
             "warn",
             {
