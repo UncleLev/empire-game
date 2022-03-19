@@ -69,6 +69,43 @@ const gameReducer = (state = initialState, { type, payload }: actionCustomType) 
             return { ...state, wordsList: newWordList };
         }
 
+        case actionTypes.EDIT_WORLD: {
+            const newWord = state.wordsList.find(({ id }) => payload.wordId === id);
+
+            if (!newWord) {
+                console.error('cant find word');
+                return state;
+            }
+
+            const oldEmpire = newWord.empireId;
+
+            if (payload.value) {
+                newWord.value = payload.value;
+            }
+
+            if (payload.empireId) {
+                newWord.empireId = payload.empireId;
+            }
+
+            const newWordList = state.wordsList.map((word) => {
+                if (word.id === payload.empireId)
+                    return { ...word, subjects: [...word.subjects, { value: newWord.value, id: newWord.id }] };
+                if (word.id === newWord.id) return newWord;
+
+                if (word.id === oldEmpire && payload.empireId)
+                    return { ...word, subjects: word.subjects.filter(({ id }) => id !== newWord.id) };
+
+                return word;
+            });
+
+            return { ...state, wordsList: newWordList };
+        }
+
+        case actionTypes.DELETE_WORLD: {
+            const newWordList = state.wordsList.filter(({ id }) => id !== payload);
+            return { ...state, wordsList: newWordList };
+        }
+
         default:
             return state;
     }
