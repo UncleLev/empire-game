@@ -2,6 +2,8 @@ import { Dialog, DialogActions, DialogContent, DialogTitle, Button, Autocomplete
 import React, { useMemo, useState } from 'react';
 import { wordListItemType } from '../../store/game/game.reducer';
 
+import './DefeatModal.scss';
+
 interface DefeatModalInterface {
     open: boolean;
     empiresList: wordListItemType[];
@@ -14,7 +16,6 @@ function DefeatModal({ open, onClose, defeatEmpire, empiresList, selectedWord }:
     const [empire, setEmpire] = useState<wordListItemType | null>();
 
     const handleSubmit = () => {
-        console.log(empire);
         if (!empire || !selectedWord) {
             console.error('Can`t find empire or selectedWord');
             return;
@@ -27,14 +28,11 @@ function DefeatModal({ open, onClose, defeatEmpire, empiresList, selectedWord }:
         () => empiresList.filter(({ id }) => (selectedWord ? id !== selectedWord.id : false)),
         [selectedWord],
     );
-    console.log(' ------------------------------');
-    console.log('DefeatModal ~ options', options);
-    console.log(' ------------------------------');
 
     return (
         <Dialog className="defeat-modal" open={open}>
             <DialogTitle>Defeat of empire</DialogTitle>
-            <DialogContent>
+            <DialogContent className="defeat-modal__content">
                 <Autocomplete
                     sx={{ width: 300 }}
                     options={options}

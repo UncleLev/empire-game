@@ -69,6 +69,7 @@ function AddWordsPage({ wordsList, category, addWord }: AddWordsPageInterface) {
                                 control={control}
                                 render={({ field }) => (
                                     <TextField
+                                        autoFocus
                                         label="Введіть слово"
                                         fullWidth
                                         value={field.value}

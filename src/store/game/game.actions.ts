@@ -9,3 +9,18 @@ export const defeatEmpire = (payload: { empire: wordListItemType; defeat: wordLi
     type: actionTypes.DEFEAT_EMPIRE,
     payload,
 });
+
+export interface editWordInterface {
+    wordId: string;
+    empireId?: string;
+    value: string;
+}
+export const editWord = (payload: editWordInterface) => ({
+    type: actionTypes.EDIT_WORLD,
+    payload,
+});
+
+export const deleteWord = (wordId: string) => ({
+    type: actionTypes.DELETE_WORLD,
+    payload: wordId,
+});

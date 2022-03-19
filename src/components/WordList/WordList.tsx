@@ -1,11 +1,13 @@
 import EditIcon from '@mui/icons-material/Edit';
-import { IconButton } from '@mui/material';
 import GppBadIcon from '@mui/icons-material/GppBad';
+import { IconButton } from '@mui/material';
 import clsx from 'clsx';
 import React, { useState } from 'react';
 import { wordListItemType } from '../../store/game/game.reducer';
-import './WordList.scss';
 import DefeatModal from '../DefeatModal';
+import EditWordModal from '../EditWordModal';
+
+import './WordList.scss';
 
 interface WordListInterface {
     wordsList?: wordListItemType[];
@@ -60,6 +62,9 @@ function WordList({ wordsList }: WordListInterface) {
                 ))}
             </div>
             <DefeatModal selectedWord={selectedWord} open={openDefeat} onClose={handleCloseModal} />
+            {selectedWord && openEdit && (
+                <EditWordModal selectedWord={selectedWord} open={openEdit} onClose={handleCloseModal} />
+            )}
         </div>
     );
 }
