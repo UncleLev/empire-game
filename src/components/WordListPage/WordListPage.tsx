@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-import PageWithHeader from '../PageWithHeader';
+import Tab from '@mui/material/Tab';
+import React, { useState } from 'react';
+import EmpiresList from 'src/components/EmpiresList';
 import routerConfig from '../../constants/routerConfig';
+import PageWithHeader from '../PageWithHeader';
 import WordList from '../WordList';
 
 function WordListPage() {
@@ -27,7 +28,9 @@ function WordListPage() {
                 <TabPanel value="1">
                     <WordList />
                 </TabPanel>
-                {/* <TabPanel value="2"></TabPanel> */}
+                <TabPanel value="2">
+                    <EmpiresList />
+                </TabPanel>
             </TabContext>
         </PageWithHeader>
     );
