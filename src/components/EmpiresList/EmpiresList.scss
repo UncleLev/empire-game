@@ -1,0 +1,27 @@
+.empires-list {
+    &__container {
+    }
+}
+.empires-list-item {
+    border-radius: 10px !important;
+    margin-bottom: 20px !important;
+
+    &::before {
+        height: 0 !important;
+    }
+    &__summary-btn {
+    }
+    &__summary-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 95%;
+        
+    }
+    &__summary-title {
+        max-width: calc(100% - 40px);
+        hyphens: auto;
+        word-break: break-word;
+        text-transform: uppercase;
+    }
+}
