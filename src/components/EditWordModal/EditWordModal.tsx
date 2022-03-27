@@ -25,7 +25,7 @@ const validationSchema = yup.object().shape({
         .max(120, 'Max length is 75 symbols'),
 });
 
-function EditWordModal({ selectedWord, open, empiresList, onClose, editWord, deleteWord }: EditWordModalInterface) {
+const EditWordModal = ({ selectedWord, open, empiresList, onClose, editWord, deleteWord }: EditWordModalInterface) => {
     const [empire, setEmpire] = useState<wordListItemType | null>();
     const {
         formState: { isValid, isDirty, errors },
@@ -118,6 +118,6 @@ function EditWordModal({ selectedWord, open, empiresList, onClose, editWord, del
             </DialogActions>
         </Dialog>
     );
-}
+};
 
 export default EditWordModal;

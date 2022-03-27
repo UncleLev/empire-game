@@ -24,3 +24,7 @@ export const deleteWord = (wordId: string) => ({
     type: actionTypes.DELETE_WORLD,
     payload: wordId,
 });
+
+export const restartGame = () => ({
+    type: actionTypes.RESTART_GAME,
+});

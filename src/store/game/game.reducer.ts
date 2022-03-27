@@ -106,6 +106,10 @@ const gameReducer = (state = initialState, { type, payload }: actionCustomType) 
             return { ...state, wordsList: newWordList };
         }
 
+        case actionTypes.RESTART_GAME: {
+            return { ...initialState };
+        }
+
         default:
             return state;
     }
