@@ -8,11 +8,7 @@
             "typescript": {}
         }
     },
-    "extends": [
-        "plugin:react/recommended",
-        "airbnb",
-        "plugin:prettier/recommended"
-    ],
+    "extends": ["plugin:react/recommended", "airbnb", "plugin:prettier/recommended"],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaFeatures": {
@@ -21,21 +17,17 @@
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
-    "plugins": [
-        "react",
-        "@typescript-eslint"
-    ],
+    "plugins": ["react", "@typescript-eslint"],
     "rules": {
         "default-param-last": "off",
         "import/prefer-default-export": "off",
-        "no-console": ["warn", { "allow": ["warn", "error"] }] ,
+        "no-console": ["warn", { "allow": ["warn", "error"] }],
         "no-unused-vars": ["warn", { "vars": "all", "args": "none", "ignoreRestSiblings": false }],
+        "react/function-component-definition": "off",
         "react/jsx-filename-extension": [
             "warn",
             {
-                "extensions": [
-                    ".tsx"
-                ]
+                "extensions": [".tsx"]
             }
         ],
         "import/extensions": [
@@ -46,12 +38,6 @@
                 "jsx": "never",
                 "ts": "never",
                 "tsx": "never"
-            }
-        ],
-        "react/function-component-definition": [
-            2,
-            {
-                "namedComponents": "function-declaration"
             }
         ]
     }

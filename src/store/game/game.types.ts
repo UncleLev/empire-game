@@ -7,3 +7,5 @@ export const DEFEAT_EMPIRE = 'DEFEAT_EMPIRE';
 export const DELETE_WORLD = 'DELETE_WORLD';
 
 export const EDIT_WORLD = 'EDIT_WORLD';
+
+export const RESTART_GAME = 'RESTART_GAME';

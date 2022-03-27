@@ -7,12 +7,18 @@ import EmpiresList from 'src/components/EmpiresList';
 import routerConfig from '../../constants/routerConfig';
 import PageWithHeader from '../PageWithHeader';
 import WordList from '../WordList';
+import VictoryModal from '../VictoryModal';
 
-function WordListPage() {
+interface WordListPageInterface {
+    isEndOfGame: boolean;
+}
+
+function WordListPage({ isEndOfGame }: WordListPageInterface) {
     const [tabIndex, setTabIndex] = useState('1');
     const handleChangeTab = (event: React.SyntheticEvent, newValue: string) => {
         setTabIndex(newValue);
     };
+
     return (
         <PageWithHeader
             pageTitle="Word List"
@@ -32,6 +38,7 @@ function WordListPage() {
                     <EmpiresList />
                 </TabPanel>
             </TabContext>
+            <VictoryModal open={!!isEndOfGame} />
         </PageWithHeader>
     );
 }
