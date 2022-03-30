@@ -10,9 +10,13 @@ export const getEmpiresList = createSelector(game, (state) =>
     state.wordsList.filter((word: wordListItemType) => !word.empireId),
 );
 
-export const getWinner = createSelector(game, (state) => state.wordsList.find((word) => !word.empireId));
+export const getWinner = createSelector(game, (state) =>
+    state.wordsList.find((word) => !word.empireId && word.subjects.length),
+);
 
 export const getEndOfGame = createSelector(
     game,
-    (state) => state.wordsList.filter((word) => !word.empireId).length === 1,
+    (state) =>
+        state.wordsList.filter((word) => word.subjects.length).length === 1 &&
+        state.wordsList.filter((word) => !word.empireId).length === 1,
 );
