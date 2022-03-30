@@ -1,17 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { StyledEngineProvider, ThemeProvider } from '@mui/material';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
-import routerConfig from './constants/routerConfig';
-import StartPage from './components/StartPage';
 import theme from './styles/theme';
 import store from './store/store';
-import AddWordsPage from './components/AddWordsPage';
-import MenuPage from './components/MenuPage';
-import WordListPage from './components/WordListPage';
+import App from './App';
 
 ReactDOM.render(
     <React.StrictMode>
@@ -19,12 +15,7 @@ ReactDOM.render(
             <Provider store={store}>
                 <ThemeProvider theme={theme}>
                     <BrowserRouter>
-                        <Routes>
-                            <Route path={routerConfig.startPage} element={<StartPage />} />
-                            <Route path={routerConfig.addWords} element={<AddWordsPage />} />
-                            <Route path={routerConfig.menu} element={<MenuPage />} />
-                            <Route path={routerConfig.wordList} element={<WordListPage />} />
-                        </Routes>
+                        <App />
                     </BrowserRouter>
                 </ThemeProvider>
             </Provider>
