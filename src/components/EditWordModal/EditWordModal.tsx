@@ -1,10 +1,11 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Autocomplete, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from '@mui/material';
+import { Autocomplete, Button, DialogActions, DialogContent, DialogTitle, TextField } from '@mui/material';
 import React, { useMemo, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { editWordInterface } from 'src/store/actions';
 import { wordListItemType } from 'src/store/game/game.reducer';
 import * as yup from 'yup';
+import { CustomDialog } from '../CustomDialog';
 
 import './EditWordModal.scss';
 
@@ -64,7 +65,7 @@ const EditWordModal = ({ selectedWord, open, empiresList, onClose, editWord, del
     };
 
     return (
-        <Dialog open={open} className="edit-word-modal">
+        <CustomDialog open={open} className="edit-word-modal">
             <DialogTitle>Defeat of empire</DialogTitle>
             <DialogContent className="edit-word-modal__content">
                 <Controller
@@ -116,7 +117,7 @@ const EditWordModal = ({ selectedWord, open, empiresList, onClose, editWord, del
                     Ok
                 </Button>
             </DialogActions>
-        </Dialog>
+        </CustomDialog>
     );
 };
 

@@ -1,6 +1,7 @@
-import { Dialog, DialogActions, DialogContent, DialogTitle, Button, Autocomplete, TextField } from '@mui/material';
+import { Autocomplete, Button, DialogActions, DialogContent, DialogTitle, TextField } from '@mui/material';
 import React, { useMemo, useState } from 'react';
 import { wordListItemType } from '../../store/game/game.reducer';
+import { CustomDialog } from '../CustomDialog';
 
 import './DefeatModal.scss';
 
@@ -30,7 +31,7 @@ function DefeatModal({ open, onClose, defeatEmpire, empiresList, selectedWord }:
     );
 
     return (
-        <Dialog className="defeat-modal" open={open}>
+        <CustomDialog className="defeat-modal" open={open}>
             <DialogTitle>Defeat of empire</DialogTitle>
             <DialogContent className="defeat-modal__content">
                 <Autocomplete
@@ -57,7 +58,7 @@ function DefeatModal({ open, onClose, defeatEmpire, empiresList, selectedWord }:
                     Ok
                 </Button>
             </DialogActions>
-        </Dialog>
+        </CustomDialog>
     );
 }
 
