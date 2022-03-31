@@ -1,8 +1,9 @@
 import React from 'react';
-import { Dialog, DialogActions, Button, DialogTitle, DialogContent } from '@mui/material';
+import { DialogActions, Button, DialogTitle, DialogContent } from '@mui/material';
 import { wordListItemType } from 'src/store/game/game.reducer';
 import { useNavigate } from 'react-router-dom';
 import routerConfig from 'src/constants/routerConfig';
+import { CustomDialog } from '../CustomDialog';
 
 interface VictoryModalInterface {
     open: boolean;
@@ -19,15 +20,17 @@ function VictoryModal({ open, winner, restartGame }: VictoryModalInterface) {
     };
 
     return (
-        <Dialog open={open} onClose={() => {}} className="victory-modal">
+        <CustomDialog open={open} className="victory-modal">
             <DialogTitle>The end of game</DialogTitle>
             <DialogContent>
                 <p>The empire {winner?.value} win</p>
             </DialogContent>
             <DialogActions>
-                <Button onClick={handleRestart}>Restart</Button>
+                <Button variant="contained" onClick={handleRestart}>
+                    Restart
+                </Button>
             </DialogActions>
-        </Dialog>
+        </CustomDialog>
     );
 }
 
