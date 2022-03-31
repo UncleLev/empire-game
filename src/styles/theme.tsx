@@ -9,6 +9,10 @@ const theme = createTheme({
         //     main: ,
         // },
     },
+    typography: {
+        fontFamily: `"Montserrat", "Roboto", "Helvetica", "Arial", sans-serif`,
+        fontSize: 14,
+    },
 });
 
 export default theme;
