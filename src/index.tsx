@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import { StyledEngineProvider, ThemeProvider } from '@mui/material';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
@@ -8,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import theme from './styles/theme';
 import store from './store/store';
 import App from './App';
+import '@fontsource/montserrat';
 
 ReactDOM.render(
     <React.StrictMode>

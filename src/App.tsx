@@ -1,11 +1,13 @@
 import React from 'react';
-import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import routerConfig from 'src/constants/routerConfig';
 import AddWordsPage from './components/AddWordsPage';
 import MenuPage from './components/MenuPage';
 import StartPage from './components/StartPage';
 import WordListPage from './components/WordListPage';
 import publicRoute from './service/hook/publicRoute';
+
+import './index.css';
 
 function App() {
     return (
