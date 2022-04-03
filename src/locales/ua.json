@@ -1,0 +1,50 @@
+{
+    "general": {
+        "okay": "добре",
+        "start": "Почати",
+        "category": "Категорія",
+        "add": "Додати",
+        "addMore": "Додати ще",
+        "menu": "Меню",
+        "total": "Усього",
+        "fake": "Фейк",
+        "list": "Список",
+        "empire": "Імперія",
+        "cancel": "Скасувати",
+        "delete": "Видалити",
+        "restart": "Перезапустити"
+    },
+    "validation": {
+        "required": "Це поле обов’язкове",
+        "minLength": "Мінальна довжина – {{val, number}} символів",
+        "maxLength": "Максимальна довжина – {{val, number}} символів"
+    },
+    "addWordPage": {
+        "typeWord": "Введіть нове слово",
+        "isAdded": "Слово додано"
+    },
+    "startPage": {
+        "typeCategory": "Категорія типу"
+    },
+    "menu": {
+        "addWords": "Додати слова",
+        "wordList": "Список слів",
+        "changeCategory": "Змінити категорію"
+    },
+    "wordListPage": {
+        "wordList": "Список слів"
+    },
+    "defeatModal": {
+        "defeatOf": "Поразка імперії",
+        "chooseOwner": "Вибрати власника"
+    },
+    "editModal": {
+        "editEmpire": "Редагувати",
+        "wordValue": "Значення слова",
+        "inEmpire": "В імперії"
+    },
+    "victoryModal": {
+        "endOfGame": "Кінець гри",
+        "winnerIs": "Імперія '{{val}}' перемогла"
+    }
+}

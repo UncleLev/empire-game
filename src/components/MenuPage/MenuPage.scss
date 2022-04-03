@@ -1,10 +1,29 @@
 .menu-page {
     &__wrapper {
         margin: auto 0;
+        height: 100%;
     }
     &__btn {
         margin-bottom: 20px;
     }
     &__container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    &__languages {
+        display: flex;
+        justify-content: flex-end;
+        column-gap: 10px;
+        width: 100%;
+    }
+    &__nav {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 80%;
+    }
+    &__wrapper {
     }
 }

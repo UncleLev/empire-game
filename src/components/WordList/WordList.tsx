@@ -3,10 +3,10 @@ import GppBadIcon from '@mui/icons-material/GppBad';
 import { IconButton } from '@mui/material';
 import clsx from 'clsx';
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { wordListItemType } from '../../store/game/game.reducer';
 import DefeatModal from '../DefeatModal';
 import EditWordModal from '../EditWordModal';
-
 import './WordList.scss';
 
 interface WordListInterface {
@@ -14,6 +14,8 @@ interface WordListInterface {
 }
 
 function WordList({ wordsList }: WordListInterface) {
+    const { t } = useTranslation(['general']);
+
     const [selectedWord, setSelectedWord] = useState<wordListItemType | null>(null);
     const [openEdit, setOpenEdit] = useState(false);
     const [openDefeat, setOpenDefeat] = useState(false);
@@ -47,7 +49,7 @@ function WordList({ wordsList }: WordListInterface) {
                         )}
                     >
                         <span className="word-list-item__title">{word.value}</span>
-                        {word.fake && <span className="word-list-item__fake">fake</span>}
+                        {word.fake && <span className="word-list-item__fake">{t('general:fake')}</span>}
                         <div className="word-list-item__controller">
                             <IconButton color="warning" onClick={handleEdit(word)}>
                                 <EditIcon />

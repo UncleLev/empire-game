@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Checkbox, FormControlLabel, TextField } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Link } from 'react-router-dom';
@@ -39,6 +40,8 @@ function AddWordsPage({ wordsList, category, addWord }: AddWordsPageInterface) {
         mode: 'all',
     });
 
+    const { t } = useTranslation(['addWordPage', 'general']);
+
     const [isWordAdded, setIsWordAdded] = useState(false);
 
     const onSubmit = (data: any) => {
@@ -53,13 +56,16 @@ function AddWordsPage({ wordsList, category, addWord }: AddWordsPageInterface) {
     const handleAddMore = () => {
         setIsWordAdded(false);
     };
+    // TODO: add wods from pages
 
     return (
         <PageWithHeader pageTitle="Add words" className="add-words-page" goBackLink={routerConfig.startPage}>
             <div className="add-words-page__container">
                 {!isWordAdded ? (
                     <div className="add-words-page__form add-words-page-form">
-                        <h3 className="add-words-page-form__category">Категорія: {category}</h3>
+                        <h3 className="add-words-page-form__category">
+                            {t('general:category')}: {category}
+                        </h3>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <Controller
                                 name="word"
@@ -67,7 +73,7 @@ function AddWordsPage({ wordsList, category, addWord }: AddWordsPageInterface) {
                                 render={({ field }) => (
                                     <TextField
                                         autoFocus
-                                        label="Введіть слово"
+                                        label={t('addWordPage:typeWord')}
                                         fullWidth
                                         value={field.value}
                                         name={field.name}
@@ -91,7 +97,7 @@ function AddWordsPage({ wordsList, category, addWord }: AddWordsPageInterface) {
                                                 onChange={field.onChange}
                                             />
                                         }
-                                        label="fake"
+                                        label={t('general:fake')}
                                     />
                                 )}
                             />
@@ -103,20 +109,22 @@ function AddWordsPage({ wordsList, category, addWord }: AddWordsPageInterface) {
                                 type="submit"
                                 disabled={!isDirty || !isValid}
                             >
-                                Дадати
+                                {t('general:add')}
                             </Button>
                         </form>
                     </div>
                 ) : (
                     <div className="add-words-page__word-added-container add-words-page-word-added-container">
-                        <h2 className="add-words-page-word-added-container__title"> Слово Додано</h2>
-                        <p className="add-words-page-word-added-container__total">Total: {wordsList.length}</p>
+                        <h2 className="add-words-page-word-added-container__title">{t('addWordPage:isAdded')}</h2>
+                        <p className="add-words-page-word-added-container__total">
+                            {t('general:total')}: {wordsList.length}
+                        </p>
                         <Button size="large" variant="outlined" fullWidth onClick={handleAddMore}>
-                            Додати ще
+                            {t('general:addMore')}
                         </Button>
                         <Link className="add-words-page-word-added-container__link" to={routerConfig.menu}>
                             <Button size="large" variant="contained" fullWidth>
-                                Меню
+                                {t('general:menu')}
                             </Button>
                         </Link>
                     </div>

@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import theme from './styles/theme';
 import store from './store/store';
 import App from './App';
+import './i18n';
 import '@fontsource/montserrat';
 
 ReactDOM.render(

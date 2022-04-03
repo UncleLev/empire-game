@@ -1,0 +1,50 @@
+{
+    "general": {
+        "okay": "Ok",
+        "start": "Start",
+        "category": "Category",
+        "add": "Add",
+        "addMore": "Add more",
+        "menu": "Menu",
+        "total": "Total",
+        "fake": "Fake",
+        "list": "List",
+        "empire": "Empire",
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "restart": "Restart"
+    },
+    "validation": {
+        "required": "This field is required",
+        "minLength": "Min length is {{val, number}} symbols",
+        "maxLength": "Max length is {{val, number}} symbols"
+    },
+    "addWordPage": {
+        "typeWord": "Type new word",
+        "isAdded": "The word is added"
+    },
+    "startPage": {
+        "typeCategory": "Type category"
+    },
+    "menu": {
+        "addWords": "Add words",
+        "wordList": "Word list",
+        "changeCategory": "Change category"
+    },
+    "wordListPage": {
+        "wordList": "Word list"
+    },
+    "defeatModal": {
+        "defeatOf": "Defeat of empire",
+        "chooseOwner": "Choose owner"
+    },
+    "editModal": {
+        "editEmpire": "Edit",
+        "wordValue": "Word value",
+        "inEmpire": "In empire"
+    },
+    "victoryModal": {
+        "endOfGame": "The end of game",
+        "winnerIs": "The empire '{{val}}' win"
+    }
+}

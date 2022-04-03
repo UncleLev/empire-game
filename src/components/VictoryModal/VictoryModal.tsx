@@ -1,8 +1,9 @@
+import { Button, DialogActions, DialogContent, DialogTitle } from '@mui/material';
 import React from 'react';
-import { DialogActions, Button, DialogTitle, DialogContent } from '@mui/material';
-import { wordListItemType } from 'src/store/game/game.reducer';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import routerConfig from 'src/constants/routerConfig';
+import { wordListItemType } from 'src/store/game/game.reducer';
 import { CustomDialog } from '../CustomDialog';
 
 interface VictoryModalInterface {
@@ -13,6 +14,7 @@ interface VictoryModalInterface {
 
 function VictoryModal({ open, winner, restartGame }: VictoryModalInterface) {
     const navigate = useNavigate();
+    const { t } = useTranslation(['general', 'victoryModal']);
 
     const handleRestart = () => {
         restartGame();
@@ -21,13 +23,13 @@ function VictoryModal({ open, winner, restartGame }: VictoryModalInterface) {
 
     return (
         <CustomDialog open={open} className="victory-modal">
-            <DialogTitle>The end of game</DialogTitle>
+            <DialogTitle>{t('victoryModal:endOfGame')}</DialogTitle>
             <DialogContent>
-                <p>The empire {winner?.value} win</p>
+                <p>{t('victoryModal:winnerIs', { val: winner?.value })}</p>
             </DialogContent>
             <DialogActions>
                 <Button variant="contained" onClick={handleRestart}>
-                    Restart
+                    {t('general:restart')}
                 </Button>
             </DialogActions>
         </CustomDialog>
