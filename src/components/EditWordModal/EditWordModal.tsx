@@ -2,11 +2,11 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Autocomplete, Button, DialogActions, DialogContent, DialogTitle, TextField } from '@mui/material';
 import React, { useMemo, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { editWordInterface } from 'src/store/actions';
 import { wordListItemType } from 'src/store/game/game.reducer';
 import * as yup from 'yup';
 import { CustomDialog } from '../CustomDialog';
-
 import './EditWordModal.scss';
 
 interface EditWordModalInterface {
@@ -18,16 +18,19 @@ interface EditWordModalInterface {
     deleteWord(wordId: string): void;
 }
 
-const validationSchema = yup.object().shape({
-    value: yup
-        .string()
-        .required('This field is required')
-        .min(2, 'Min length is 2 symbols')
-        .max(120, 'Max length is 75 symbols'),
-});
-
 const EditWordModal = ({ selectedWord, open, empiresList, onClose, editWord, deleteWord }: EditWordModalInterface) => {
+    const { t } = useTranslation(['validation', 'general', 'editModal']);
+
     const [empire, setEmpire] = useState<wordListItemType | null>();
+
+    const validationSchema = yup.object().shape({
+        value: yup
+            .string()
+            .required(t('validation:required'))
+            .min(2, t('validation:minLength', { val: 2 }))
+            .max(256, t('validation:maxLength', { val: 256 })),
+    });
+
     const {
         formState: { isValid, isDirty, errors },
         control,
@@ -66,14 +69,16 @@ const EditWordModal = ({ selectedWord, open, empiresList, onClose, editWord, del
 
     return (
         <CustomDialog open={open} className="edit-word-modal">
-            <DialogTitle>Defeat of empire</DialogTitle>
+            <DialogTitle>
+                {t('editModal:editEmpire')} {`"${selectedWord.value}"`}
+            </DialogTitle>
             <DialogContent className="edit-word-modal__content">
                 <Controller
                     name="value"
                     control={control}
                     render={({ field }) => (
                         <TextField
-                            label="Word value"
+                            label={t('editModal:wordValue')}
                             fullWidth
                             value={field.value}
                             name={field.name}
@@ -95,7 +100,7 @@ const EditWordModal = ({ selectedWord, open, empiresList, onClose, editWord, del
                             <TextField
                                 // eslint-disable-next-line react/jsx-props-no-spreading
                                 {...params}
-                                label="In empire"
+                                label={t('editModal:inEmpire')}
                                 inputProps={{
                                     ...params.inputProps,
                                     autoComplete: 'new-password', // disable autocomplete and autofill
@@ -107,14 +112,14 @@ const EditWordModal = ({ selectedWord, open, empiresList, onClose, editWord, del
 
                 {showDelete && (
                     <Button variant="contained" onClick={handleDelete}>
-                        DELETE
+                        {t('general:delete')}
                     </Button>
                 )}
             </DialogContent>
             <DialogActions>
-                <Button onClick={onClose}>Cancel</Button>
+                <Button onClick={onClose}>{t('general:cancel')}</Button>
                 <Button disabled={!isValid && isDirty} onClick={handleSubmit}>
-                    Ok
+                    {t('general:okay')}
                 </Button>
             </DialogActions>
         </CustomDialog>

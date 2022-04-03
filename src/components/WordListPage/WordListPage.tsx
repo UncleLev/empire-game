@@ -3,17 +3,20 @@ import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import Tab from '@mui/material/Tab';
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import EmpiresList from 'src/components/EmpiresList';
 import routerConfig from '../../constants/routerConfig';
 import PageWithHeader from '../PageWithHeader';
-import WordList from '../WordList';
 import VictoryModal from '../VictoryModal';
+import WordList from '../WordList';
 
 interface WordListPageInterface {
     isEndOfGame: boolean;
 }
 
 function WordListPage({ isEndOfGame }: WordListPageInterface) {
+    const { t } = useTranslation(['menu', 'general']);
+
     const [tabIndex, setTabIndex] = useState('1');
     const handleChangeTab = (event: React.SyntheticEvent, newValue: string) => {
         setTabIndex(newValue);
@@ -21,15 +24,15 @@ function WordListPage({ isEndOfGame }: WordListPageInterface) {
 
     return (
         <PageWithHeader
-            pageTitle="Word List"
+            pageTitle={t('menu:wordList')}
             className="word-list-page"
             goBackLink={routerConfig.menu}
-            goBackTitle="Menu"
+            goBackTitle={t('general:menu')}
         >
             <TabContext value={tabIndex}>
                 <TabList variant="fullWidth" onChange={handleChangeTab}>
-                    <Tab label="List" value="1" />
-                    <Tab label="Empires" value="2" />
+                    <Tab label={t('general:list')} value="1" />
+                    <Tab label={t('general:empire')} value="2" />
                 </TabList>
                 <TabPanel value="1">
                     <WordList />

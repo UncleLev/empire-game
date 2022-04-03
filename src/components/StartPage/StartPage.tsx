@@ -1,30 +1,33 @@
-import React from 'react';
-import { Button, TextField } from '@mui/material';
-import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import { Button, TextField } from '@mui/material';
+import React from 'react';
+import { Controller, useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 import { useNavigate } from 'react-router-dom';
+import * as yup from 'yup';
+import routerConfig from '../../constants/routerConfig';
 import PageWithHeader from '../PageWithHeader';
 
 import './_StartPage.scss';
-import routerConfig from '../../constants/routerConfig';
-
-const validationSchema = yup.object().shape({
-    category: yup
-        .string()
-        .required('This field is required')
-        .min(2, 'Min length is 2 symbols')
-        .max(75, 'Max length is 75 symbols'),
-});
 
 interface StartPageInterface {
     category: string;
-    // eslint-disable-next-line no-unused-vars
     changeGameCategory: (value: string) => void;
 }
 
 function StartPage({ category, changeGameCategory }: StartPageInterface) {
     const navigate = useNavigate();
+    const { t } = useTranslation(['general', 'startPage', 'validation']);
+
+    const validationSchema = yup.object().shape({
+        category: yup
+            .string()
+            .required(t('validation:required'))
+            .min(2, t('validation:minLength', { val: 2 }))
+            .max(256, t('validation:maxLength', { val: 256 })),
+    });
+
     const {
         formState: { errors, isDirty, isValid },
         control,
@@ -47,7 +50,7 @@ function StartPage({ category, changeGameCategory }: StartPageInterface) {
             <div className="start-page__container">
                 <div className="start-page__input-container start-page-input-container">
                     <form className="start-page-input-container__form" onSubmit={handleSubmit(onSubmit)}>
-                        <h3 className="start-page-input-container__title">Type category</h3>
+                        <h3 className="start-page-input-container__title">{t('startPage:typeCategory')}</h3>
                         <Controller
                             control={control}
                             name="category"
@@ -58,7 +61,7 @@ function StartPage({ category, changeGameCategory }: StartPageInterface) {
                                     name={field.name}
                                     value={field.value}
                                     className="start-page-input-container__input"
-                                    label="Category"
+                                    label={t('general:category')}
                                     margin="normal"
                                     error={!!errors?.category}
                                     helperText={errors?.category?.message || ' '}
@@ -73,7 +76,7 @@ function StartPage({ category, changeGameCategory }: StartPageInterface) {
                             variant="contained"
                             color="success"
                         >
-                            Start
+                            {t('general:start')}
                         </Button>
                     </form>
                 </div>

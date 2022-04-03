@@ -1,8 +1,8 @@
 import { Autocomplete, Button, DialogActions, DialogContent, DialogTitle, TextField } from '@mui/material';
 import React, { useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { wordListItemType } from '../../store/game/game.reducer';
 import { CustomDialog } from '../CustomDialog';
-
 import './DefeatModal.scss';
 
 interface DefeatModalInterface {
@@ -14,6 +14,8 @@ interface DefeatModalInterface {
 }
 
 function DefeatModal({ open, onClose, defeatEmpire, empiresList, selectedWord }: DefeatModalInterface) {
+    const { t } = useTranslation(['general,defeatModal']);
+
     const [empire, setEmpire] = useState<wordListItemType | null>();
 
     const handleSubmit = () => {
@@ -32,7 +34,9 @@ function DefeatModal({ open, onClose, defeatEmpire, empiresList, selectedWord }:
 
     return (
         <CustomDialog className="defeat-modal" open={open}>
-            <DialogTitle>Defeat of empire</DialogTitle>
+            <DialogTitle>
+                {t('defeatModal:defeatOf')} {`"${selectedWord?.value}"`}
+            </DialogTitle>
             <DialogContent className="defeat-modal__content">
                 <Autocomplete
                     sx={{ width: 300 }}
@@ -43,7 +47,7 @@ function DefeatModal({ open, onClose, defeatEmpire, empiresList, selectedWord }:
                         <TextField
                             // eslint-disable-next-line react/jsx-props-no-spreading
                             {...params}
-                            label="Choose a empire"
+                            label={t('defeatModal:chooseOwner')}
                             inputProps={{
                                 ...params.inputProps,
                                 autoComplete: 'new-password', // disable autocomplete and autofill
@@ -53,9 +57,9 @@ function DefeatModal({ open, onClose, defeatEmpire, empiresList, selectedWord }:
                 />
             </DialogContent>
             <DialogActions>
-                <Button onClick={onClose}>Cancel</Button>
+                <Button onClick={onClose}>{t('general:cancel')}</Button>
                 <Button disabled={!empire} onClick={handleSubmit}>
-                    Ok
+                    {t('general:okay')}
                 </Button>
             </DialogActions>
         </CustomDialog>
