@@ -9,7 +9,7 @@ import './MenuPage.scss';
 
 function MenuPage() {
     const navigate = useNavigate();
-    const { t, i18n } = useTranslation('menu');
+    const { t, i18n } = useTranslation(['menu']);
 
     const handleChangeLanguage = (language: string) => () => {
         i18n.changeLanguage(language);

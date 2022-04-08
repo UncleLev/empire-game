@@ -32,7 +32,8 @@
         "changeCategory": "Змінити категорію"
     },
     "wordListPage": {
-        "wordList": "Список слів"
+        "wordList": "Список слів",
+        "reorder": "Перемішати"
     },
     "defeatModal": {
         "defeatOf": "Поразка імперії",

@@ -1,9 +1,12 @@
 import EditIcon from '@mui/icons-material/Edit';
 import GppBadIcon from '@mui/icons-material/GppBad';
-import { IconButton } from '@mui/material';
+import CachedIcon from '@mui/icons-material/Cached';
+import { Button, IconButton } from '@mui/material';
 import clsx from 'clsx';
-import React, { useState } from 'react';
+import { ReactComponent as CrownIcon } from 'src/assets/icons/crown-icon.svg';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { shuffleArray } from 'src/service/helpers/general.helpers';
 import { wordListItemType } from '../../store/game/game.reducer';
 import DefeatModal from '../DefeatModal';
 import EditWordModal from '../EditWordModal';
@@ -14,11 +17,12 @@ interface WordListInterface {
 }
 
 function WordList({ wordsList }: WordListInterface) {
-    const { t } = useTranslation(['general']);
+    const { t } = useTranslation(['general', 'wordListPage']);
 
     const [selectedWord, setSelectedWord] = useState<wordListItemType | null>(null);
     const [openEdit, setOpenEdit] = useState(false);
     const [openDefeat, setOpenDefeat] = useState(false);
+    const [words, setWords] = useState<wordListItemType[]>([]);
 
     const handleEdit = (word: wordListItemType) => () => {
         setSelectedWord(word);
@@ -36,10 +40,25 @@ function WordList({ wordsList }: WordListInterface) {
         setOpenDefeat(false);
     };
 
+    const handleReorder = () => {
+        if (!wordsList) return;
+        setWords(shuffleArray(wordsList));
+    };
+
+    useEffect(() => {
+        if (!wordsList) return;
+        setWords(shuffleArray(wordsList));
+    }, [wordsList]);
+
     return (
         <div className="word-list">
+            <div className="word-list__controllers">
+                <Button variant="contained" onClick={handleReorder} endIcon={<CachedIcon />}>
+                    {t('wordListPage:reorder')}
+                </Button>
+            </div>
             <div className="word-list__container">
-                {wordsList?.map((word) => (
+                {words?.map((word) => (
                     <div
                         key={word.id}
                         className={clsx(
@@ -48,6 +67,7 @@ function WordList({ wordsList }: WordListInterface) {
                             word.subjects.length && 'word-list__item word-list-item--is-empire',
                         )}
                     >
+                        {!!word.subjects.length && <CrownIcon className="word-list-item__crown-icon" />}
                         <span className="word-list-item__title">{word.value}</span>
                         {word.fake && <span className="word-list-item__fake">{t('general:fake')}</span>}
                         <div className="word-list-item__controller">

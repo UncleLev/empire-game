@@ -14,7 +14,7 @@ interface DefeatModalInterface {
 }
 
 function DefeatModal({ open, onClose, defeatEmpire, empiresList, selectedWord }: DefeatModalInterface) {
-    const { t } = useTranslation(['general,defeatModal']);
+    const { t } = useTranslation(['general', 'defeatModal']);
 
     const [empire, setEmpire] = useState<wordListItemType | null>();
 
