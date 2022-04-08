@@ -1,10 +1,15 @@
 .word-list {
+    &__controllers {
+        padding: 5px;
+        margin-bottom: 20px;
+    }
     &__container {
     }
     &__item {
     }
 }
 .word-list-item {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -33,5 +38,13 @@
     &__controller {
         display: flex;
         justify-content: space-between;
+    }
+
+    &__crown-icon {
+        position: absolute;
+        width: 40px;
+        top: -17px;
+        left: -13px;
+        transform: rotate(320deg);
     }
 }

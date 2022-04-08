@@ -32,7 +32,8 @@
         "changeCategory": "Change category"
     },
     "wordListPage": {
-        "wordList": "Word list"
+        "wordList": "Word list",
+        "reorder": "Reorder"
     },
     "defeatModal": {
         "defeatOf": "Defeat of empire",
