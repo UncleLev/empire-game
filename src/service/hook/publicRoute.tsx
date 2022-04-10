@@ -12,6 +12,8 @@ const publicRoute = (children: React.ReactNode) => {
 
     if (isEndOfGame && location.pathname !== routerConfig.wordList) return <Navigate to={routerConfig.wordList} />;
 
+    if (!category && location.pathname !== routerConfig.startPage) return <Navigate to={routerConfig.startPage} />;
+
     if (category && !wordsList.length && location.pathname !== routerConfig.addWords)
         return <Navigate to={routerConfig.addWords} />;
 

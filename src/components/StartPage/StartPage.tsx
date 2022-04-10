@@ -69,6 +69,7 @@ function StartPage({ category, changeGameCategory }: StartPageInterface) {
                                     margin="normal"
                                     error={!!errors?.category}
                                     helperText={errors?.category?.message || ' '}
+                                    autoComplete="off"
                                 />
                             )}
                         />

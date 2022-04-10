@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
-
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import './_GoBackHeaderButton.scss';
 
 interface GoBackHeaderButtonInterface {
@@ -12,7 +11,7 @@ interface GoBackHeaderButtonInterface {
 function GoBackHeaderButton({ goBackLink, goBackTitle }: GoBackHeaderButtonInterface) {
     return (
         <Link className="go-back-header-button" to={goBackLink}>
-            <ArrowBackRoundedIcon />
+            <ArrowBackIosIcon />
             <span className="go-back-header-button__text">{goBackTitle}</span>
         </Link>
     );

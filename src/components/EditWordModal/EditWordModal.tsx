@@ -103,7 +103,7 @@ const EditWordModal = ({ selectedWord, open, empiresList, onClose, editWord, del
                                 label={t('editModal:inEmpire')}
                                 inputProps={{
                                     ...params.inputProps,
-                                    autoComplete: 'new-password', // disable autocomplete and autofill
+                                    autoComplete: 'off',
                                 }}
                             />
                         )}
