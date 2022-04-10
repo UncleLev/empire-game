@@ -20,3 +20,5 @@ export const getEndOfGame = createSelector(
         state.wordsList.filter((word) => word.subjects.length).length === 1 &&
         state.wordsList.filter((word) => !word.empireId).length === 1,
 );
+
+export const getEmpiresColors = createSelector(game, (state) => state.empiresColors);

@@ -18,7 +18,7 @@ interface StartPageInterface {
 
 function StartPage({ category, changeGameCategory }: StartPageInterface) {
     const navigate = useNavigate();
-    const { t } = useTranslation(['general', 'startPage', 'validation']);
+    const { t } = useTranslation(['general', 'startPage', 'menu', 'validation']);
 
     const validationSchema = yup.object().shape({
         category: yup
@@ -46,7 +46,12 @@ function StartPage({ category, changeGameCategory }: StartPageInterface) {
     };
 
     return (
-        <PageWithHeader pageTitle="Empire Game" className="start-page">
+        <PageWithHeader
+            pageTitle="Empire Game"
+            className="start-page"
+            goBackLink={category && routerConfig.menu}
+            goBackTitle={t('general:menu')}
+        >
             <div className="start-page__container">
                 <div className="start-page__input-container start-page-input-container">
                     <form className="start-page-input-container__form" onSubmit={handleSubmit(onSubmit)}>

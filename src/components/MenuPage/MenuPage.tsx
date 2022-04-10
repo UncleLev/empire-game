@@ -9,19 +9,20 @@ import './MenuPage.scss';
 
 function MenuPage() {
     const navigate = useNavigate();
-    const { t, i18n } = useTranslation(['menu']);
+    const { t, i18n } = useTranslation(['general', 'menu']);
 
     const handleChangeLanguage = (language: string) => () => {
         i18n.changeLanguage(language);
     };
 
     return (
-        <PageWithHeader pageTitle="Menu" className="menu-page">
+        <PageWithHeader pageTitle={t('general:menu')} className="menu-page">
             <div className="menu-page__wrapper">
                 <div className="menu-page__container">
                     <div className="menu-page__languages">
                         {availableLanguages.map((lng) => (
                             <Button
+                                key={lng}
                                 color="success"
                                 variant={lng === i18n.language ? 'contained' : 'outlined'}
                                 onClick={handleChangeLanguage(lng)}

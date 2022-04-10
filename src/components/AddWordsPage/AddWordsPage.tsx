@@ -40,7 +40,7 @@ function AddWordsPage({ wordsList, category, addWord }: AddWordsPageInterface) {
         mode: 'all',
     });
 
-    const { t } = useTranslation(['addWordPage', 'general']);
+    const { t } = useTranslation(['addWordPage', 'general', 'menu']);
 
     const [isWordAdded, setIsWordAdded] = useState(false);
 
@@ -56,10 +56,14 @@ function AddWordsPage({ wordsList, category, addWord }: AddWordsPageInterface) {
     const handleAddMore = () => {
         setIsWordAdded(false);
     };
-    // TODO: add wods from pages
 
     return (
-        <PageWithHeader pageTitle="Add words" className="add-words-page" goBackLink={routerConfig.startPage}>
+        <PageWithHeader
+            pageTitle={t('menu:addWords')}
+            className="add-words-page"
+            goBackTitle={t('general:menu')}
+            goBackLink={routerConfig.menu}
+        >
             <div className="add-words-page__container">
                 {!isWordAdded ? (
                     <div className="add-words-page__form add-words-page-form">

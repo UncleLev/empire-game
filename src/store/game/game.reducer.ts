@@ -1,4 +1,5 @@
 import { nanoid } from 'nanoid';
+import randomColor from 'randomcolor';
 import * as actionTypes from './game.types';
 
 export type subjectType = {
@@ -17,11 +18,13 @@ export type wordListItemType = {
 interface stateInterface {
     category: string;
     wordsList: wordListItemType[];
+    empiresColors: any;
 }
 
 const initialState: stateInterface = {
     category: '',
     wordsList: [],
+    empiresColors: {},
 };
 type actionCustomType = {
     type: string;
@@ -60,13 +63,22 @@ const gameReducer = (state = initialState, { type, payload }: actionCustomType) 
             defeat.subjects = [];
             defeat.empireId = empire.id;
 
+            const empireColor = randomColor({
+                luminosity: 'bright',
+                format: 'rgb', // e.g. 'rgb(225,200,20)'
+            });
+
             const newWordList = state.wordsList.map((word) => {
                 if (word.id === empire!.id) return empire;
                 if (word.id === defeat!.id) return defeat;
                 return word;
             });
 
-            return { ...state, wordsList: newWordList };
+            return {
+                ...state,
+                wordsList: newWordList,
+                empiresColors: { ...state.empiresColors, [empire.id]: empireColor },
+            };
         }
 
         case actionTypes.EDIT_WORLD: {
