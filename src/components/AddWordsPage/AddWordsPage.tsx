@@ -84,6 +84,7 @@ function AddWordsPage({ wordsList, category, addWord }: AddWordsPageInterface) {
                                         onChange={field.onChange}
                                         error={!!errors.word}
                                         helperText={errors?.word?.message || ' '}
+                                        autoComplete="off"
                                     />
                                 )}
                             />

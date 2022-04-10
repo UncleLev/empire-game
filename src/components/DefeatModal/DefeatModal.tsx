@@ -50,7 +50,7 @@ function DefeatModal({ open, onClose, defeatEmpire, empiresList, selectedWord }:
                             label={t('defeatModal:chooseOwner')}
                             inputProps={{
                                 ...params.inputProps,
-                                autoComplete: 'new-password', // disable autocomplete and autofill
+                                autoComplete: 'off',
                             }}
                         />
                     )}

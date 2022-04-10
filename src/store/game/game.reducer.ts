@@ -65,8 +65,11 @@ const gameReducer = (state = initialState, { type, payload }: actionCustomType) 
 
             const empireColor = randomColor({
                 luminosity: 'bright',
-                format: 'rgb', // e.g. 'rgb(225,200,20)'
+                format: 'rgb',
             });
+
+            const hasColor = Object.keys(state.empiresColors).find((key) => key === empire.id);
+            const newColor = hasColor ? {} : { [empire.id]: empireColor };
 
             const newWordList = state.wordsList.map((word) => {
                 if (word.id === empire!.id) return empire;
@@ -77,7 +80,7 @@ const gameReducer = (state = initialState, { type, payload }: actionCustomType) 
             return {
                 ...state,
                 wordsList: newWordList,
-                empiresColors: { ...state.empiresColors, [empire.id]: empireColor },
+                empiresColors: { ...state.empiresColors, ...newColor },
             };
         }
 
