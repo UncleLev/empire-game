@@ -1,6 +1,7 @@
 {
     "short_name": "Empire game",
     "name": "Web version of Empire game",
+    "start_url": "index.html",
     "icons": [
         {
             "src": "favicon.ico",
@@ -18,7 +19,6 @@
             "sizes": "512x512"
         }
     ],
-    "start_url": ".",
     "display": "standalone",
     "theme_color": "#000000",
     "background_color": "#ffffff"
