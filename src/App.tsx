@@ -10,6 +10,7 @@ import publicRoute from './service/hook/publicRoute';
 import './index.css';
 
 function App() {
+    document.title = 'Empire game';
     return (
         <Routes>
             <Route path={routerConfig.startPage} element={publicRoute(<StartPage />)} />

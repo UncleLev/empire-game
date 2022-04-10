@@ -3,7 +3,6 @@ import { Button, TextField } from '@mui/material';
 import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
 import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import routerConfig from '../../constants/routerConfig';
