@@ -1,11 +1,12 @@
+import CachedIcon from '@mui/icons-material/Cached';
 import EditIcon from '@mui/icons-material/Edit';
 import GppBadIcon from '@mui/icons-material/GppBad';
-import CachedIcon from '@mui/icons-material/Cached';
 import { Button, IconButton } from '@mui/material';
 import clsx from 'clsx';
-import { ReactComponent as CrownIcon } from 'src/assets/icons/crown-icon.svg';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { ReactComponent as CrownIcon } from 'src/assets/icons/crown-icon.svg';
+import { isColorLight } from 'src/service/helpers/color.helper';
 import { shuffleArray } from 'src/service/helpers/general.helpers';
 import { wordListItemType } from '../../store/game/game.reducer';
 import DefeatModal from '../DefeatModal';
@@ -14,9 +15,10 @@ import './WordList.scss';
 
 interface WordListInterface {
     wordsList?: wordListItemType[];
+    empiresColors: any;
 }
 
-function WordList({ wordsList }: WordListInterface) {
+function WordList({ wordsList, empiresColors }: WordListInterface) {
     const { t } = useTranslation(['general', 'wordListPage']);
 
     const [selectedWord, setSelectedWord] = useState<wordListItemType | null>(null);
@@ -58,30 +60,40 @@ function WordList({ wordsList }: WordListInterface) {
                 </Button>
             </div>
             <div className="word-list__container">
-                {words?.map((word) => (
-                    <div
-                        key={word.id}
-                        className={clsx(
-                            'word-list__item word-list-item',
-                            word.empireId && 'word-list__item word-list-item--in-empire',
-                            word.subjects.length && 'word-list__item word-list-item--is-empire',
-                        )}
-                    >
-                        {!!word.subjects.length && <CrownIcon className="word-list-item__crown-icon" />}
-                        <span className="word-list-item__title">{word.value}</span>
-                        {word.fake && <span className="word-list-item__fake">{t('general:fake')}</span>}
-                        <div className="word-list-item__controller">
-                            <IconButton color="warning" onClick={handleEdit(word)}>
-                                <EditIcon />
-                            </IconButton>
-                            {!(word.fake || word.empireId) && (
-                                <IconButton color="error" onClick={handleDefeat(word)}>
-                                    <GppBadIcon />
-                                </IconButton>
+                {words?.map((word) => {
+                    const backgroundColor = word.subjects.length
+                        ? empiresColors[word.id]
+                        : empiresColors[word?.empireId];
+                    const color = isColorLight(backgroundColor) ? '#000' : '#fff';
+                    return (
+                        <div
+                            key={word.id}
+                            className={clsx(
+                                'word-list__item word-list-item',
+                                word.empireId && 'word-list__item word-list-item--in-empire',
+                                word.subjects.length && 'word-list__item word-list-item--is-empire',
                             )}
+                            style={{
+                                backgroundColor,
+                                color,
+                            }}
+                        >
+                            {!!word.subjects.length && <CrownIcon className="word-list-item__crown-icon" />}
+                            <span className="word-list-item__title">{word.value}</span>
+                            {word.fake && <span className="word-list-item__fake">{t('general:fake')}</span>}
+                            <div className="word-list-item__controller">
+                                <IconButton color="warning" onClick={handleEdit(word)}>
+                                    <EditIcon />
+                                </IconButton>
+                                {!(word.fake || word.empireId) && (
+                                    <IconButton color="error" onClick={handleDefeat(word)}>
+                                        <GppBadIcon />
+                                    </IconButton>
+                                )}
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    );
+                })}
             </div>
             <DefeatModal selectedWord={selectedWord} open={openDefeat} onClose={handleCloseModal} />
             {selectedWord && openEdit && (

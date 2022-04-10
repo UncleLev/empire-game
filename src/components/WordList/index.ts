@@ -5,4 +5,5 @@ import { RootState } from '../../store/store';
 
 export default connect((state: RootState) => ({
     wordsList: selectors.getWordsList(state),
+    empiresColors: selectors.getEmpiresColors(state),
 }))(WordList);
