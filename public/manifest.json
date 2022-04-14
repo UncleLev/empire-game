@@ -1,7 +1,7 @@
 {
     "short_name": "Empire game",
     "name": "Web version of Empire game",
-    "start_url": "index.html",
+    "start_url": ".",
     "icons": [
         {
             "src": "favicon.ico",
