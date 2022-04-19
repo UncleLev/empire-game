@@ -19,6 +19,16 @@
     },
     "plugins": ["react", "@typescript-eslint"],
     "rules": {
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+                "js": "never",
+                "jsx": "never",
+                "ts": "never",
+                "tsx": "never"
+            }
+        ],
         "default-param-last": "off",
         "prefer-destructuring": "off",
         "import/prefer-default-export": "off",
@@ -29,16 +39,6 @@
             "warn",
             {
                 "extensions": [".tsx"]
-            }
-        ],
-        "import/extensions": [
-            "error",
-            "ignorePackages",
-            {
-                "js": "never",
-                "jsx": "never",
-                "ts": "never",
-                "tsx": "never"
             }
         ]
     }
