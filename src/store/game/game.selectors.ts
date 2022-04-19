@@ -7,7 +7,7 @@ const game = (state: RootState) => state.game;
 export const getGameCategory = createSelector(game, (state) => state.category);
 export const getWordsList = createSelector(game, (state) => state.wordsList);
 export const getEmpiresList = createSelector(game, (state) =>
-    state.wordsList.filter((word: wordListItemType) => !word.empireId),
+    state.wordsList.filter((word: wordListItemType) => !word.empireId && !word.fake),
 );
 
 export const getWinner = createSelector(game, (state) =>
