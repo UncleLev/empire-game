@@ -114,8 +114,8 @@ dist
 /coverage
 
 # production
+/client/build
 /build
-
 # misc
 .DS_Store
 .env.local
@@ -123,3 +123,4 @@ dist
 .env.test.local
 .env.production.local
 
+/.vscode

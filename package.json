@@ -1,116 +1,36 @@
 {
-    "name": "empire-game",
-    "version": "0.1.0",
-    "private": true,
-    "description": "empire game web app",
-    "repository": "https://github.com/UncleLev/empire-game.git",
-    "author": "risentean@gmail.com",
-    "license": "MIT",
-    "dependencies": {
-        "@emotion/react": "^11.7.1",
-        "@emotion/styled": "^11.6.0",
-        "@fontsource/montserrat": "^4.5.7",
-        "@hookform/resolvers": "^2.8.8",
-        "@mui/icons-material": "^5.4.2",
-        "@mui/lab": "^5.0.0-alpha.70",
-        "@mui/material": "^5.4.2",
-        "@testing-library/jest-dom": "^5.14.1",
-        "@testing-library/react": "^12.0.0",
-        "@testing-library/user-event": "^13.2.1",
-        "@types/estree": "^0.0.51",
-        "@types/jest": "^27.0.1",
-        "@types/node": "^16.7.13",
-        "@types/node-sass": "^4.11.2",
-        "@types/prettier": "^2.4.4",
-        "@types/randomcolor": "^0.5.6",
-        "@types/react": "^17.0.20",
-        "@types/react-dom": "^17.0.9",
-        "@types/react-router-dom": "^5.3.3",
-        "clsx": "^1.1.1",
-        "husky": "^7.0.4",
-        "i18next": "^21.6.14",
-        "i18next-browser-languagedetector": "^6.1.4",
-        "lodash": "^4.17.21",
-        "nanoid": "^3.3.1",
-        "node-sass": "^7.0.1",
-        "prettier": "^2.5.1",
-        "randomcolor": "^0.6.2",
-        "react": "^17.0.2",
-        "react-dom": "^17.0.2",
-        "react-hook-form": "^7.27.0",
-        "react-i18next": "^11.16.2",
-        "react-redux": "^7.2.6",
-        "react-router-dom": "^6.2.2",
-        "react-scripts": "5.0.0",
-        "redux": "^4.1.2",
-        "redux-thunk": "^2.4.1",
-        "reselect": "^4.1.5",
-        "reset-css": "^5.0.1",
-        "typescript": "^4.4.2",
-        "web-vitals": "^2.1.0",
-        "workbox-background-sync": "^5.1.4",
-        "workbox-broadcast-update": "^5.1.4",
-        "workbox-cacheable-response": "^5.1.4",
-        "workbox-core": "^5.1.4",
-        "workbox-expiration": "^5.1.4",
-        "workbox-google-analytics": "^5.1.4",
-        "workbox-navigation-preload": "^5.1.4",
-        "workbox-precaching": "^5.1.4",
-        "workbox-range-requests": "^5.1.4",
-        "workbox-routing": "^5.1.4",
-        "workbox-strategies": "^5.1.4",
-        "workbox-streams": "^5.1.4",
-        "yup": "^0.32.11"
-    },
-    "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject"
-    },
-    "eslintConfig": {
-        "extends": [
-            "react-app",
-            "react-app/jest"
-        ]
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
-    },
-    "devDependencies": {
-        "@types/react-redux": "^7.1.22",
-        "@types/redux": "^3.6.0",
-        "@types/redux-thunk": "^2.1.0",
-        "@typescript-eslint/eslint-plugin": "^5.12.0",
-        "@typescript-eslint/parser": "^5.12.0",
-        "eslint": "^8.9.0",
-        "eslint-config-airbnb": "^19.0.4",
-        "eslint-config-prettier": "^8.3.0",
-        "eslint-import-resolver-typescript": "^2.5.0",
-        "eslint-plugin-import": "^2.25.4",
-        "eslint-plugin-jsx-a11y": "^6.5.1",
-        "eslint-plugin-prettier": "^4.0.0",
-        "eslint-plugin-react": "^7.28.0",
-        "eslint-plugin-react-hooks": "^4.3.0"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged"
-        }
-    },
-    "lint-staged": {
-        "**/*.js": [
-            "eslint --fix",
-            "git add"
-        ]
-    }
+  "name": "empire-game-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/UncleLev/empire-game.git",
+  "author": "risentean@gmail.com",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "start:prod": "NODE_ENV=production nodemon server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.18.0",
+    "express-mongo-sanitize": "^2.2.0",
+    "helmet": "^5.0.2",
+    "mongoose": "^6.3.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.15"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "parcel-bundler": "^1.12.3",
+    "prettier": "^1.17.0"
+  }
 }

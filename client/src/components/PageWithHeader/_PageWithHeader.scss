@@ -6,6 +6,8 @@
         padding: 15px 10px;
         display: flex;
         flex-direction: column;
+        max-width: 500px;
+        margin: 0 auto; 
         &--with-back-link {
             height: calc(100vh - 165px);
 
